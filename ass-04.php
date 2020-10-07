@@ -10,9 +10,10 @@ for($i=0;;$i++){
     }
 }fclose($f);
 $ps=implode(" ",$p);
-$pa=explode(" ",$ps);
+$pss=str_ireplace(["(",")",'"',"'"],"",$ps);
+$pa=explode(" ",$pss);
 for($j=0;$j<=count($pa);$j++){
-    if(($pa[$j]===ucfirst($pa[$j]))&&($pa[$j]!="My")&&($pa[$j]!="The")&&(preg_match("/[a-z]/",$pa[$j]))){
+    if(($pa[$j]===ucfirst($pa[$j]))&&($pa[$j]!="My")&&($pa[$j]!="The")&&(strtolower(substr($pa[$j],1))===substr($pa[$j],1))){
         echo str_ireplace([".",","],"",$pa[$j])," ";
         $k="E";
     }else{
